@@ -1,0 +1,15 @@
+{
+    "name": "armin/ecommerce",
+    "autoload": {
+        "psr-4": {
+            "Armin\\Ecommerce\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "PouyaniArmin",
+            "email": "pouyaniarmin@gmail.com"
+        }
+    ],
+    "require": {}
+}
