@@ -2,7 +2,8 @@
     "name": "armin/ecommerce",
     "autoload": {
         "psr-4": {
-            "Armin\\Ecommerce\\": "src/"
+            "Conterollers\\":"controllers/",
+            "Core\\":"core/"
         }
     },
     "authors": [
