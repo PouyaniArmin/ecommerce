@@ -25,14 +25,7 @@ class Router
 
     public function resolve()
     {
-        $url = $this->request->request_path();
-        $method = $this->request->request_method();
-        $callback = $this->routes[$method][$url] ?? false;
-        if ($callback === false) {
-            echo "Not Found 404";
-            exit;
-        }
-
+        $callback=$this->check_callback();
         if (is_string($callback)) {
             return $this->renderView($callback);
         }
@@ -44,6 +37,17 @@ class Router
     }
 
 
+    private function check_callback(){
+        $url = $this->request->request_path();
+        $method = $this->request->request_method();
+        $callback = $this->routes[$method][$url] ?? false;
+        if ($callback===false) {
+            echo "Not Found 404";
+            exit;
+        }
+         return $callback;
+    }
+
     public function renderView($view,$params=[])
     {
         $contentlayout = $this->renderLayout();
@@ -51,18 +55,18 @@ class Router
         return str_replace("{{content}}", $contetnView, $contentlayout);
     }
 
-    private function renderLayout()
-    {
 
-        if (!isset(Application::$app->conteroller->layout)) {
-            $layout = 'main';
-        } else {
-            $layout = Application::$app->conteroller->layout;
-        }
+    private function check_layout():string{
+      return Application::$app->conteroller->layout ?? 'main';   
+    }
+    private function renderLayout()
+    {   
+        $layout=$this->check_layout();
         ob_start();
         require Application::$ROOT_PARH . "/views/layouts/$layout.php";
         return ob_get_clean();
     }
+
 
     private function renderOnlyView($view,$params)
     {
