@@ -8,6 +8,7 @@ class Application{
     public Router $router;
     public Request $request;
     public Controller $conteroller;
+   
     
     public function __construct($root_path){
         self::$app=$this;
