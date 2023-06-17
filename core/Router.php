@@ -6,10 +6,13 @@ class Router extends View
 {
 
     public Request $request;
+    public Response $response;
     protected array $routes = [];
-    public function __construct(Request $request)
+    public function __construct(Request $request,Response $response)
     {
         $this->request = $request;
+        $this->response=$response;
+    
     }
 
 
@@ -26,6 +29,11 @@ class Router extends View
     public function resolve()
     {
         $callback = $this->check_callback();
+        if ($callback === false) {
+            $this->response->statusResponseCode(404);
+            return $this->renderView('notFound');
+            
+        }
         if (is_string($callback)) {
             return $this->renderView($callback);
         }
@@ -42,10 +50,6 @@ class Router extends View
         $url = $this->request->request_path();
         $method = $this->request->request_method();
         $callback = $this->routes[$method][$url] ?? false;
-        if ($callback === false) {
-            echo "Not Found 404";
-            exit;
-        }
         return $callback;
     }
 }
