@@ -7,6 +7,7 @@ class Application{
     public static Application $app;
     public Router $router;
     public Request $request;
+    public Response $response;
     public Controller $conteroller;
    
     
@@ -14,7 +15,8 @@ class Application{
         self::$app=$this;
         self::$ROOT_PARH=$root_path;
         $this->request=new Request;
-        $this->router=new Router($this->request);
+        $this->response=new Response;
+        $this->router=new Router($this->request,$this->response);
     }
 
     public function getController():Controller{
