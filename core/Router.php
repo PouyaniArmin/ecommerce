@@ -21,9 +21,9 @@ class Router extends View
         $this->routes['get'][$path] = $callback;
     }
 
-    public function psot($path, $callback)
+    public function post($path, $callback)
     {
-        $this->routes['psot'][$path] = $callback;
+        $this->routes['post'][$path] = $callback;
     }
 
     public function resolve()
