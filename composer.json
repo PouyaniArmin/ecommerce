@@ -14,5 +14,7 @@
             "email": "pouyaniarmin@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    }
 }
