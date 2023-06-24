@@ -4,7 +4,8 @@
         "psr-4": {
             "Conterollers\\":"controllers/",
             "Core\\":"core/",
-            "Models\\":"models/"
+            "Models\\":"models/",
+            "Database\\":"database/"
         }
     },
     "authors": [
