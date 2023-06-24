@@ -3,7 +3,8 @@
     "autoload": {
         "psr-4": {
             "Conterollers\\":"controllers/",
-            "Core\\":"core/"
+            "Core\\":"core/",
+            "Models\\":"models/"
         }
     },
     "authors": [
